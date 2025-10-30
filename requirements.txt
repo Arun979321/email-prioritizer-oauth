@@ -1,8 +1,0 @@
-fastapi
-uvicorn[standard]
-pydantic
-transformers>=4.30
-torch  # CPU or GPU build; if using colab or GPU install correct wheel
-sentencepiece
-python-multipart
-aiohttp

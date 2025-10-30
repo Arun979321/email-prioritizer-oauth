@@ -1,0 +1,69 @@
+[
+  {
+    "id": "e1",
+    "from": "hr@company.com",
+    "to": "you@example.com",
+    "subject": "Meeting today at 4 PM — mandatory",
+    "body": "All staff must attend a meeting today at 4 PM in Conference Room A. Attendance is mandatory. Please bring quarterly reports.",
+    "date": "2025-10-24T09:30:00+05:30"
+  },
+  {
+    "id": "e2",
+    "from": "client@acme.com",
+    "to": "you@example.com",
+    "subject": "Need report ASAP",
+    "body": "We need the market analysis report ASAP. If you can send it by noon today that would be great. This is urgent for our board review.",
+    "date": "2025-10-24T02:20:00+05:30"
+  },
+  {
+    "id": "e3",
+    "from": "news@amazon.com",
+    "to": "you@example.com",
+    "subject": "Your order has shipped",
+    "body": "Your order #1234 has shipped and is expected to be delivered on October 26.",
+    "date": "2025-10-23T22:10:00+05:30"
+  },
+  {
+    "id": "e4",
+    "from": "promo@shopping.com",
+    "to": "you@example.com",
+    "subject": "Huge discounts this weekend!",
+    "body": "Don't miss our weekend discounts up to 60% on electronics. Use code SAVE60.",
+    "date": "2025-10-24T06:00:00+05:30"
+  },
+  {
+    "id": "e5",
+    "from": "spammy@unknown.co",
+    "to": "you@example.com",
+    "subject": "You won a prize!!!",
+    "body": "Click here to claim your prize now.",
+    "date": "2025-10-23T12:00:00+05:30"
+  },
+  {
+    "id": "e6",
+    "from": "supergroupjobb@gmail.com",
+    "to": "you@example.com",
+    "subject": "WALKIN INTERVIEW CALL LETTER",
+    "body": "Hi, We are pleased to inform you that you have been shortlisted for a walk-in interview for the position of Software Developer at Super Group Job. The interview is scheduled for October 30, 2025, at 10:00 AM at our office located at 123 Tech Park, Silicon Valley. Please bring your updated resume, a valid ID proof, and any relevant certificates. We look forward to meeting you and discussing how you can contribute to our team. Best regards, Super Group Job Recruitment Team.",
+    "date": "2025-10-24T12:00:00+05:30"
+  },
+  
+  {
+        "id": "1",
+        "from_": "alice@example.com",
+        "to": "you@example.com",
+        "subject": "Project Update",
+        "body": "Please find the latest updates on the project...",
+        "date": "2025-10-24T15:30:00"
+    },
+    {
+        "id": "2",
+        "from_": "bob@example.com",
+        "to": "you@example.com",
+        "subject": "Dinner Plans",
+        "body": "Hey, are we still on for dinner tonight?",
+        "date": "2025-10-24T17:00:00"
+    }
+
+
+]

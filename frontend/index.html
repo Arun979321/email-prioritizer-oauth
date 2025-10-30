@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>AI Email Prioritizer — Gmail OAuth</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #f6f8fb, #e3e9ff);
+      padding: 30px;
+      color: #222;
+    }
+    
+    .high-risk { color: #e74c3c; font-weight: bold; }
+    .medium-risk { color: #f39c12; font-weight: bold; }
+    .low-risk { color: #27ae60; font-weight: bold; }
+
+    .card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    }    
+
+
+    h2 { text-align: center; color: #2b3a67; font-size: 1.8em; margin-bottom: 10px; }
+    .toolbar { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; }
+    button {
+      background: linear-gradient(135deg, #4e73df, #224abe);
+      border: none; color: white; padding: 10px 18px;
+      border-radius: 8px; font-size: 1em; cursor: pointer;
+    }
+    button:hover { background: linear-gradient(135deg, #5a82f3, #2a58d2); }
+    #info { color: #555; text-align: center; margin-bottom: 15px; }
+    .results { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+    .card { background: white; border-radius: 12px; padding: 18px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+    .high { border-left: 5px solid #e74c3c; } .med { border-left: 5px solid #f39c12; } .low { border-left: 5px solid #27ae60; }
+  </style>
+</head>
+<body>
+  <h2>📧 AI Email Prioritizer — Gmail (OAuth)</h2>
+  <div class="toolbar">
+    <button id="btnLogin">🔐 Login with Google</button>
+    <button id="btnAnalyze">📊 Analyze Gmail</button>
+  </div>
+  <div id="info"></div>
+  <div class="results" id="results"></div>
+
+<script>
+  document.getElementById("btnLogin").addEventListener("click", () => {
+    window.location.href = "/auth/login";
+  });
+
+  document.getElementById("btnAnalyze").addEventListener("click", async () => {
+    const info = document.getElementById("info");
+    info.textContent = "🔍 Fetching and analyzing Gmail...";
+    try {
+      const res = await fetch("/emails");
+      if (!res.ok) throw new Error("Not logged in or API error");
+      const data = await res.json();
+    
+      info.textContent = `✅ Found ${data.count} emails`;
+      const container = document.getElementById("results");
+      container.innerHTML = "";
+      data.emails.forEach(e => {
+        const div = document.createElement("div");
+        div.className = "card";
+
+        if (e.priority_score >= 70) div.classList.add("high");
+        else if (e.priority_score >= 40) div.classList.add("med");
+        else div.classList.add("low");
+
+        const riskClass = e.risk_level === "High" ? "high-risk"
+                         : e.risk_level === "Medium" ? "medium-risk"
+                         : "low-risk";
+
+        div.innerHTML = `
+          <b>${e.subject || "(No Subject)"}</b><br>
+          From: ${e.from}<br>
+          Type: <b>${e.type || "N/A"}</b> | 
+          Risk: <span class="${riskClass}">${e.risk_level || "N/A"}</span> 
+          (Score: ${e.risk_score || 0})<br>
+          Category: ${e.category || "Unknown"} 
+          (${((e.category_confidence || 0) * 100).toFixed(0)}%)<br>
+          <hr>
+          ${e.summary || e.body}<br>
+          <small>Urgent: ${e.urgent ? "Yes" : "No"} | 
+          Priority Score: ${e.priority_score}</small>
+        `;
+
+        container.appendChild(div);
+      });
+
+    } catch (err) {
+      info.textContent = "❌ Error: " + err.message;
+    }
+  }); 
+    async function checkLoginStatus() {
+      try{
+
+        const res = await fetch("/auth/status");
+        if (res.ok) {
+           const data = await res.json();
+           if (data.logged_in) {
+              const btnLogin = document.getElementById("btnLogin");
+              btnLogin.textContent = `✅ Logged in as ${data.email || "User"}`;
+              btnLogin.disabled = true;
+              btnLogin.style.opacity = "0.7";
+        } 
+    }
+  } catch(err) {
+      console.error("Error checking login status:", err);
+    }
+  }
+  // after login check success
+const logoutBtn = document.createElement("button");
+logoutBtn.textContent = "Log out";
+logoutBtn.onclick = () => { window.location.href = "/auth/logout"; };
+document.querySelector(".toolbar").appendChild(logoutBtn);
+
+
+    checkLoginStatus();
+</script>
+</body>
+</html>

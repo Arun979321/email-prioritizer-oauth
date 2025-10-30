@@ -1,0 +1,19 @@
+# Ignore environment and secrets
+.env
+tokens.json
+
+# Python cache and virtual environment
+__pycache__/
+venv/
+
+# System/IDE files
+.DS_Store
+*.pyc
+*.pyo
+*.pyd
+*.log
+.idea/
+.vscode/
+
+# OS-specific
+Thumbs.db

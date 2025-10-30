@@ -17,3 +17,18 @@ venv/
 
 # OS-specific
 Thumbs.db
+
+# Model weights and large assets
+models/**/*.safetensors
+models/**/*.bin
+models/**/*.pt
+
+# Temporary files
+*.tmp
+*.bak
+
+# Build/coverage artifacts
+dist/
+build/
+.coverage
+

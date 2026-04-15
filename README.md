@@ -8,9 +8,7 @@ Managing emails efficiently is a common challenge in both personal and professio
 
 It integrates with Gmail using OAuth 2.0 and leverages advanced Natural Language Processing (NLP) models to deliver structured, real-time insights.
 
-🔗 Live Demo
-
-===> https://email-prioritizer-email-spam-detector.onrender.com/
+🔗 Live Demo: https://email-prioritizer-email-spam-detector.onrender.com/
 
 ✨ Key Features
 🔐 Secure Gmail integration using OAuth 2.0
@@ -21,8 +19,11 @@ It integrates with Gmail using OAuth 2.0 and leverages advanced Natural Language
 🌐 REST API-based microservice architecture
 ☁️ Cloud deployment (Render)
 🏗️ System Architecture
+
 User → OAuth Authentication → Gmail API → Email Fetching  
+
 → NLP Model (BART) → Classification → Structured Output (JSON)
+
 ===> Tech Stack
 🔹 Backend
 Python
@@ -44,10 +45,10 @@ Postman (API Testing)
 2️⃣ System securely fetches emails using Gmail API
 3️⃣ Emails are processed using NLP model
 4️⃣ Model classifies emails into categories:
-
 Urgent
 Needs Reply
 Informational
+
 5️⃣ Results are returned as structured JSON
 ===> API Endpoints
 Method	Endpoint	Description
@@ -106,6 +107,8 @@ Classify emails using /classify
 🧠 Model fine-tuning for higher accuracy
 🔔 Real-time notifications
 🤝 Contribution
+
+ <img width="1872" height="877" alt="image" src="https://github.com/user-attachments/assets/4694b8eb-3669-4723-8cef-e476a4ed5e4a" />
 
 Contributions are welcome!
 Feel free to fork this repository and submit a pull request.
